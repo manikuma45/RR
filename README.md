@@ -1,6 +1,6 @@
 # README
 
-# RR (Recurring Reminder)
+# 作品名： RR (Recurring Reminder)
 
 ## 概要
 忘却曲線理論を参考にした、暗記学習を助けるメモとブックマークのサービスです。
@@ -28,13 +28,15 @@
 * PostgreSQL 12.2
 
 ## 制作資料
-* カタログ設計書
-* テーブル定義書
-* ER図
-* 画面遷移図
+1. カタログ設計書
+2. テーブル定義書
+3. ER図
+4. 画面遷移図
+
 https://drive.google.com/file/d/1c51cuMg9QzvegkNtJEpBPFIv8J5LnEw7/view?usp=sharing
 
-# ワイヤーフレーム
+5. ワイヤーフレーム
+
 https://drive.google.com/file/d/1TK8C1O7dDKvh28kFkPs1NLVLzxFgKgBU/view?usp=sharing
 
 
