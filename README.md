@@ -16,6 +16,7 @@
 * ページネーション
 * ログイン機能
 * マイページ機能
+* ラベル検索機能
 * AWSデプロイ
 * 学習項目の再出現機能
 * 学習項目の消化機能
@@ -33,7 +34,7 @@
 3. ER図
 4. 画面遷移図
 
-https://drive.google.com/file/d/1c51cuMg9QzvegkNtJEpBPFIv8J5LnEw7/view?usp=sharing
+https://docs.google.com/spreadsheets/d/18pBDld5goyVkMgAy54KPRUUhAppMNv-QSYQsP7_MgMY/edit?usp=sharing
 
 5. ワイヤーフレーム
 
