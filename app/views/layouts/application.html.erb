@@ -18,6 +18,9 @@
         <% if flash.notice.present?%>
          <li><%= flash.notice %></li>
         <% end %>
+        <% if flash.alert.present?%>
+         <li><%= flash.alert %></li>
+        <% end %>
       </ul>
         <%= yield %>
     </div>
