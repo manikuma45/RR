@@ -3,3 +3,17 @@
 <% "nav.justify-content-end" %>
 
 <%= link_to 'new item', new_learning_path, class: 'btn btn-primary' %>
+
+<table>
+  <tr>
+    <th>title</th>
+    <th>main_content</th>
+  </tr>
+<% @learnings.each do |l| %>
+  <tr>
+    <td><%= l.title %></td>
+    <td><%= l.main_content %></td>
+    <td><%= link_to "Edit", edit_learning_path(l.id) %></td>
+  </tr>
+<% end %>
+</table>

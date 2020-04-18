@@ -1,2 +1,6 @@
-<h1>Learnings#edit</h1>
-<p>Find me in app/views/learnings/edit.html.erb</p>
+<h1><%= 'Editing Item' %></h1>
+
+<%= render 'learning_form', learning: @learning %>
+
+<%= link_to 'Show', @learning %> |
+<%= link_to 'Back', learnings_path %>

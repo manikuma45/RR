@@ -10,18 +10,27 @@ class LearningsController < ApplicationController
   end
 
   def create
-    learning = Learning.new(learning_params)
-    learning.save
-    redirect_to learnings_url, notice: "項目「#{learning.title}」を登録しました。"
+    @learning = Learning.create(learning_params)
+    @learning.save
+    redirect_to learnings_url, notice: "項目「#{@learning.title}」を登録しました。"
   end
 
   def show
+    @learning = Learning.find(params[:id])
+
   end
 
   def edit
+    @learning = Learning.find(params[:id])
   end
 
   def update
+    @learning = Learning.find(params[:id])
+   if @learning.update(learning_params)
+     redirect_to learnings_path, notice: "項目「#{@learning.title}」を編集しました"
+   else
+     render :edit
+   end
   end
 
   def destroy
