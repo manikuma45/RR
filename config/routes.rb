@@ -1,3 +1,14 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+
+  resources :learnings
+
+
+  # get 'learnings/index'
+  # get 'learnings/show'
+  # get 'learnings/new'
+  # get 'learnings/create'
+  # get 'learnings/edit'
+  # get 'learnings/update'
+  # get 'learnings/destroy'
 end
