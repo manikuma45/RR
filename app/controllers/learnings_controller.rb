@@ -10,22 +10,21 @@ class LearningsController < ApplicationController
   end
 
   def create
-    @learning = Learning.create(learning_params)
-    @learning.save
-    redirect_to learnings_url, notice: "項目「#{@learning.title}」を登録しました。"
+      @learning = Learning.create(learning_params)
+    if @learning.save
+      redirect_to learnings_url, notice: "項目「#{@learning.title}」を登録しました。"
+    else
+      render :new
+    end
   end
 
   def show
-    @learning = Learning.find(params[:id])
-
   end
 
   def edit
-    @learning = Learning.find(params[:id])
   end
 
   def update
-    @learning = Learning.find(params[:id])
    if @learning.update(learning_params)
      redirect_to learnings_path, notice: "項目「#{@learning.title}」を編集しました"
    else
@@ -34,12 +33,14 @@ class LearningsController < ApplicationController
   end
 
   def destroy
+    @learning.destroy
+    redirect_to learnings_path, notice:"項目を削除しました"
   end
 
   private
 
   def set_learning
-    # @learning = current_user.tasks.find(params[:id])
+    @learning = Learning.find(params[:id])
   end
 
   def learning_params

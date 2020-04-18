@@ -13,6 +13,7 @@
   <tr>
     <td><%= l.title %></td>
     <td><%= l.main_content %></td>
+    <td><%= link_to 'Delete', learning_path(l.id), method: :delete, data: { confirm: '項目を削除します' } %></td>
     <td><%= link_to "Edit", edit_learning_path(l.id) %></td>
   </tr>
 <% end %>
