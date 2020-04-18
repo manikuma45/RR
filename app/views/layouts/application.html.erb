@@ -8,8 +8,19 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-expand-md navbar-light bg-light">
+      <a class="navbar-brand" href="#">RR</a>
+    </nav>
+
+    <div class="container">
+      <ul>
+        <% if flash.notice.present?%>
+         <li><%= flash.notice %></li>
+        <% end %>
+      </ul>
+        <%= yield %>
+    </div>
+
   </body>
 </html>

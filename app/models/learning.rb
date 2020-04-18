@@ -11,8 +11,8 @@ class Learning < ApplicationRecord
   mount_uploader :image, ImageUploader
 
   def set_nameless_content
-    self.main_content = '' if content.blank?
-    self.sub_content = '' if content.blank?
+    self.main_content = '' if main_content.blank?
+    self.sub_content = '' if sub_content.blank?
   end
 
 end

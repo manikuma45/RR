@@ -10,6 +10,9 @@ class LearningsController < ApplicationController
   end
 
   def create
+    learning = Learning.new(learning_params)
+    learning.save
+    redirect_to learnings_url, notice: "項目「#{learning.title}」を登録しました。"
   end
 
   def show
