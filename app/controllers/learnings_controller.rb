@@ -49,6 +49,7 @@ class LearningsController < ApplicationController
                                      :sub_content,
                                      :url_info,
                                      :image,
+                                     :image_cache,
                                      :checked_on,
                                      :checked_times)
   end

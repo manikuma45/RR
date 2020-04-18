@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_17_104316) do
+ActiveRecord::Schema.define(version: 2020_04_18_100533) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2020_04_17_104316) do
     t.string "url_info"
     t.date "checked_on"
     t.integer "checked_times"
-    t.string "image"
+    t.text "image"
     t.datetime "created_on", null: false
     t.datetime "updated_at", null: false
   end
