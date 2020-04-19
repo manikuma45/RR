@@ -10,7 +10,7 @@ class Learning < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  belongs_to :user
+  belongs_to :user, optional: true
   has_many :labelings, dependent: :destroy
   has_many :labels, through: :labelings
 

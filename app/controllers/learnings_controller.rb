@@ -4,7 +4,8 @@ class LearningsController < ApplicationController
 
   def index
     if current_user.present?
-      @learnings = current_user.learnings.page(params[:page])
+      @q = current_user.learnings.ransack(params[:q])
+      @learnings = @q.result(distinct: true).page(params[:page])
     else
       redirect_to login_url, notice: "Please log in."
     end
@@ -15,8 +16,8 @@ class LearningsController < ApplicationController
   end
 
   def create
-      @learning = Learning.create(learning_params)
-    if @learning.save
+      @learning = current_user.learnings.create(learning_params)
+    if @learning.save!
       redirect_to learnings_url, notice: "項目「#{@learning.title}」を登録しました。"
     else
       render :new
