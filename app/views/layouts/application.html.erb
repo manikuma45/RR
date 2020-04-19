@@ -14,13 +14,23 @@
     </nav>
 
     <div class="container">
-      <ul>
+      <ul style="list-style: none;">
+        <% if user_signed_in? %>
+            <%= link_to "学習項目一覧", learnings_path %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to "新規登録", new_user_registration_path %>
+            <%= link_to "ログイン", new_user_session_path %>
+          <% end %>
+
         <% if flash.notice.present?%>
-         <li><%= flash.notice %></li>
+          <li><p class="alert alert-notice"><%= notice %></p></li>
+        <% elsif flash.alert.present?%>
+          <li><p class="alert alert-error"><%= alert %></p></li>
+        <% elsif  %>
+
         <% end %>
-        <% if flash.alert.present?%>
-         <li><%= flash.alert %></li>
-        <% end %>
+
       </ul>
         <%= yield %>
     </div>
