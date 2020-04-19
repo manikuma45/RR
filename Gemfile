@@ -42,6 +42,8 @@ gem 'devise'
 gem 'carrierwave', '~> 2.0'
 gem 'mini_magick'
 
+gem 'kaminari'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -55,7 +57,6 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'letter_opener_web'
-
 end
 
 group :test do

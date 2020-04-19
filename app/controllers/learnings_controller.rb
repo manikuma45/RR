@@ -4,7 +4,7 @@ class LearningsController < ApplicationController
 
   def index
     if current_user.present?
-      @learnings = Learnings.
+      @learnings = current_user.learnings.page(params[:page])
     else
       redirect_to login_url, notice: "Please log in."
     end
@@ -59,5 +59,4 @@ class LearningsController < ApplicationController
                                      :checked_on,
                                      :checked_times)
   end
-
 end
