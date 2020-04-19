@@ -10,6 +10,10 @@ class Learning < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
+  belongs_to :user
+  has_many :labelings, dependent: :destroy
+  has_many :labels, through: :labelings
+
   def set_nameless_content
     self.main_content = '' if main_content.blank?
     self.sub_content = '' if sub_content.blank?

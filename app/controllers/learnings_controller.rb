@@ -3,7 +3,11 @@ class LearningsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @learnings = Learning.all
+    if current_user.present?
+      @learnings = Learnings.
+    else
+      redirect_to login_url, notice: "Please log in."
+    end
   end
 
   def new
@@ -41,7 +45,8 @@ class LearningsController < ApplicationController
   private
 
   def set_learning
-    @learning = Learning.find(params[:id])
+    # @learning = Learning.find(params[:id])
+    @learnings = current_user.learnings.find(params[:id])
   end
 
   def learning_params

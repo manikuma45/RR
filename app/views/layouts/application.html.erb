@@ -9,28 +9,29 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
+    <div class="container">
+
     <nav class="navbar navbar-expand-md navbar-light bg-light">
-      <a class="navbar-brand" href="#">RR</a>
+      <ul style="list-style: none;">
+        <a class="navbar-brand" href="###未設定###">RR</a>
+
+              <% if user_signed_in? %>
+                  <%= link_to "学習項目一覧", learnings_path %>
+                  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+                  <div>ログイン中ユーザー: <%= current_user.email %></div>
+                <% else %>
+                  <%= link_to "新規登録", new_user_registration_path %>
+                  <%= link_to "ログイン", new_user_session_path %>
+                <% end %>
+              </ul>
     </nav>
 
-    <div class="container">
-      <ul style="list-style: none;">
-        <% if user_signed_in? %>
-            <%= link_to "学習項目一覧", learnings_path %>
-            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-          <% else %>
-            <%= link_to "新規登録", new_user_registration_path %>
-            <%= link_to "ログイン", new_user_session_path %>
-          <% end %>
-
+      <ul style="list-style: none;">
         <% if flash.notice.present?%>
           <li><p class="alert alert-notice"><%= notice %></p></li>
         <% elsif flash.alert.present?%>
           <li><p class="alert alert-error"><%= alert %></p></li>
-        <% elsif  %>
-
         <% end %>
-
       </ul>
         <%= yield %>
     </div>
