@@ -47,7 +47,7 @@ class LearningsController < ApplicationController
 
   def set_learning
     # @learning = Learning.find(params[:id])
-    @learnings = current_user.learnings.find(params[:id])
+    @learning = current_user.learnings.find(params[:id])
   end
 
   def learning_params
