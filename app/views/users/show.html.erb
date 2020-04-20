@@ -1,0 +1,8 @@
+
+
+<h1>Users#show</h1>
+<p>User Name : <%= current_user.name %></p>
+<p>Registrated Email : <%= current_user.email %></p>
+
+<%= link_to 'Edit', edit_user_registration_path %> |
+<%= link_to 'Back', learnings_path(id: current_user.id) %>

@@ -7,23 +7,21 @@
 <table>
   <tr>
     <th>title</th>
-    <th>main_content</th>
+    <th>main_content </th>
+    <th>sub_content</th>
+    <th>image</th>
     <th>label</th>
-
   </tr>
 <% @learnings.each do |l| %>
   <tr>
     <td><%= l.title %></td>
     <td><%= l.main_content %></td>
+    <td><%= l.sub_content %></td>
+    <td><%= image_tag(l.image.url) if l.image && l.image.url %></td>
 
     <% l.labelings.each do |lbl| %>
-      <%= lbl.label.label_name %><br>
+      <td><%= lbl.label.label_name %><br></td>
     <% end %>
-
-    <td>
-      <strong>Image:</strong>
-      <%= image_tag(l.image.url) if l.image && l.image.url %>
-    </td>
 
     <td><%= link_to 'Delete', learning_path(l.id), method: :delete, data: { confirm: '項目を削除します' } %></td>
     <td><%= link_to "Edit", edit_learning_path(l.id) %></td>
