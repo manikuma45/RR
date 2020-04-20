@@ -8,11 +8,17 @@
   <tr>
     <th>title</th>
     <th>main_content</th>
+    <th>label</th>
+
   </tr>
 <% @learnings.each do |l| %>
   <tr>
     <td><%= l.title %></td>
     <td><%= l.main_content %></td>
+
+    <% l.labelings.each do |lbl| %>
+      <%= lbl.label.label_name %><br>
+    <% end %>
 
     <td>
       <strong>Image:</strong>
