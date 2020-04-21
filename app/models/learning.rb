@@ -8,6 +8,8 @@ class Learning < ApplicationRecord
   validates :url_info, length: { maximum: 1000 }
   # validates :image, length: { maximum: 1000 }
 
+  attribute :checked_times, :integer, default: 0
+
   mount_uploader :image, ImageUploader
 
   belongs_to :user, optional: true

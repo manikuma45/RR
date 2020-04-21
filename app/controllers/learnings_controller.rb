@@ -13,8 +13,8 @@ class LearningsController < ApplicationController
 
   def history
     if current_user.present?
-      @q = current_user.learnings.ransack(params[:q])
-      @learnings = @q.result(distinct: true).page(params[:page])
+      #履歴なのでログイン中ユーザのすべての学習項目を表示する
+      @learnings = current_user.learnings.page(params[:page])
     else
       redirect_to login_url, notice: "Please log in."
     end
@@ -95,6 +95,7 @@ class LearningsController < ApplicationController
                                      :image,
                                      :image_cache,
                                      :checked_on,
+                                     :reappearance_date,
                                      :checked_times)
   end
 end

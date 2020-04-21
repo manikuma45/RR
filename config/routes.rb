@@ -9,13 +9,11 @@ Rails.application.routes.draw do
     end
   end
 
-
   devise_for :users, controllers: {
         registrations: 'users/registrations'
 }
 
-resources :users, only: [:show]
-
+  resources :users, only: [:show]
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

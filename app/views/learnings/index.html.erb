@@ -6,8 +6,9 @@
 
 <table>
   <tr>
-    <th>created_on</th>
     <th>title</th>
+    <th>checked_times</th>
+    <th>created_on</th>
     <th>url_info</th>
     <th>main_content </th>
     <th>sub_content</th>
@@ -16,8 +17,9 @@
   </tr>
 <% @learnings.each do |l| %>
   <tr>
-    <td><%= simple_date(l.created_on) %></td>
     <td><%= l.title %></td>
+    <td><%= l.checked_times %></td>
+    <td><%= simple_date(l.created_on) %></td>
     <td><%= link_to 'URL', l.url_info, target: :_blank %></td>
     <td><%= l.main_content %></td>
     <td><%= l.sub_content %></td>
