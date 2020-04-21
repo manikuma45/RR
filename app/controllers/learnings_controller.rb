@@ -1,18 +1,29 @@
 class LearningsController < ApplicationController
-  before_action :set_learning, only: [:show, :edit, :update, :destroy]
+  before_action :set_learning, only: [:show, :edit, :update, :destroy, :check_item, :relearn, :revert]
   before_action :authenticate_user!
 
   def index
     if current_user.present?
+
       @q = current_user.learnings.ransack(params[:q])
 
       #検索クエリ用
-      @q.build_condition if @q.conditions.empty?
+      # @q.build_condition if @q.conditions.empty?
 
-      @learnings = @q.result(distinct: true).page(params[:page])
+      #ラベル検索用？
+      # @labels = current_user.labels
+
+      #ログイン中ユーザーの、チェック回数が０，あるいはreappearance_dateがDate.todayより古いものだけを並べる
+      @learnings = @q.result(distinct: true).page(params[:page]) unless @q.checked_on == Date.today
+# binding.irb
     else
       redirect_to login_url, notice: "Please log in."
     end
+  end
+
+  def search
+    @q = current_user.learnings.search(search_params)
+    @learnings = @q.result(distinct: true).page(params[:page])
   end
 
   def history
@@ -24,10 +35,49 @@ class LearningsController < ApplicationController
     end
   end
 
-  def search
-    @q = current_user.learnings.search(search_params)
-    @learnings = @q.result(distinct: true)
+  def check_item
+# binding.irb
+    @learning.checked_times += 1
+    # binding.irb
+    @learning.checked_on = Date.today
+    # binding.irb
+      case @learning.checked_times
+        # binding.irb
+        when 1
+          @learning.reappearance_date = @learning.created_on + 86400
+          @learning.save
+        when 2
+          @learning.reappearance_date = @learning.created_on + 3*86400
+          @learning.save
+          # binding.irb
+        when 3
+          @learning.reappearance_date = @learning.created_on + 7*86400
+          @learning.save
+          # binding.irb
+        when 4
+          @learning.reappearance_date = @learning.created_on + 14*86400
+          @learning.save
+        else
+          @learning.reappearance_date = @learning.created_on + 30*86400
+          @learning.save
+      end
+        #履歴移動は、その日にチェックしたものや翌日以降にチェック待ちのものを履歴ビューでみせればいいか
+        #checked_onが今日と＝＝のものをindexの表示項目から除けばいい
+        # binding.irb
+        redirect_to learnings_path
   end
+
+  def relearn
+    @learnings.checked_times = 0
+    redirect_to learnings_path, notice: "項目「#{@learnings.title}を再学習します。"
+  end
+
+  def revert
+    @learnings.reappearance_date = Date.today-1
+    redirect_to learnings_path
+  end
+
+
 
   def new
     @learning = Learning.new
@@ -40,34 +90,6 @@ class LearningsController < ApplicationController
       else
         render :new
       end
-  end
-
-  def check_item
-    @learnings.checked_times + 1
-    @learnings.checked_on = Date.today
-      case @learnings.checked_times
-        when 1
-          @learnings.reappearance_date = @learnings.created_on+1
-        when 2
-          @learnings.reappearance_date = @learnings.created_on+3
-        when 3
-          @learnings.reappearance_date = @learnings.created_on+7
-        when 4
-          @learnings.reappearance_date = @learnings.created_on+14
-        else
-          @learnings.reappearance_date = @learnings.created_on+30
-        end
-        #学習項目を履歴ページに移動する？その日にチェックしたものや翌日以降にチェックまちのものを履歴ビューでみせればいいか
-        #checked_onが今日と＝＝のものをindexの表示項目から除けばいい
-  end
-
-  def relearn
-    @learnings.checked_times = 0
-    redirect_to learnings_path, notice: "項目「#{@learnings.title}を再学習します。"
-  end
-
-  def revert
-    @learnings.checked_on = Date.today-1
   end
 
   def show

@@ -16,6 +16,10 @@ class Learning < ApplicationRecord
   has_many :labelings, dependent: :destroy
   has_many :labels, through: :labelings
 
+  # def self.ransackable_attributes(auth_object = nil)
+  #   %w[title main_content sub_content created_on]
+  # end
+
   def set_nameless_content
     self.main_content = '' if main_content.blank?
     self.sub_content = '' if sub_content.blank?
