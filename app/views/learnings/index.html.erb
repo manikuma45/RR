@@ -16,7 +16,7 @@
 <% @learnings.each do |l| %>
   <tr>
     <td><%= l.title %></td>
-    <td><%= l.url_info %></td>
+    <td><%= link_to 'URL', l.url_info, target: :_blank %></td>
     <td><%= l.main_content %></td>
     <td><%= l.sub_content %></td>
     <td><%= image_tag(l.image.url) if l.image && l.image.url %></td>

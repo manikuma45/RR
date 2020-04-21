@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_21_003921) do
+ActiveRecord::Schema.define(version: 2020_04_21_005957) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,10 @@ ActiveRecord::Schema.define(version: 2020_04_21_003921) do
   end
 
   create_table "learnings", force: :cascade do |t|
-    t.string "title"
+    t.text "title"
     t.text "main_content"
     t.text "sub_content"
-    t.string "url_info"
+    t.text "url_info"
     t.date "checked_on"
     t.integer "checked_times"
     t.text "image"
