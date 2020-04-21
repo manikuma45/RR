@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_19_045738) do
+ActiveRecord::Schema.define(version: 2020_04_21_003921) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2020_04_19_045738) do
     t.datetime "created_on", null: false
     t.datetime "updated_at", null: false
     t.bigint "user_id"
+    t.date "reappearance_date"
     t.index ["user_id"], name: "index_learnings_on_user_id"
   end
 

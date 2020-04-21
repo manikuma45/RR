@@ -2,7 +2,7 @@
   "name": "RR",
   "private": true,
   "dependencies": {
-    "bootstrap": "3",
+    "bootstrap": "^4.4.1",
     "jquery": "^3.5.0"
   }
 }

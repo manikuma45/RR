@@ -44,7 +44,7 @@ https://drive.google.com/file/d/1TK8C1O7dDKvh28kFkPs1NLVLzxFgKgBU/view?usp=shari
 ## 使用予定Gem
 * devise
 * ransack
-* Bootstrap 3
+* Bootstrap 4
 * jquery-rails
 * nginx
 * unicorn

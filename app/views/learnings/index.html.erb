@@ -7,6 +7,7 @@
 <table>
   <tr>
     <th>title</th>
+    <th>url_info</th>
     <th>main_content </th>
     <th>sub_content</th>
     <th>image</th>
@@ -15,6 +16,7 @@
 <% @learnings.each do |l| %>
   <tr>
     <td><%= l.title %></td>
+    <td><%= l.url_info %></td>
     <td><%= l.main_content %></td>
     <td><%= l.sub_content %></td>
     <td><%= image_tag(l.image.url) if l.image && l.image.url %></td>
