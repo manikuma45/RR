@@ -19,6 +19,7 @@
 
               <% if user_signed_in? %>
                   <%= link_to "学習項目一覧", learnings_path %>
+                  <%= link_to "学習項目履歴", history_learnings_path %>
                   <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
                   <div>ログイン中ユーザー: <%= current_user.email %></div>
                   <%= link_to 'ユーザー情報', user_path(id: current_user.id) %> |

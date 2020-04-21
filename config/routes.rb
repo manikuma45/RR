@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   root to: 'learnings#index'
-  resources :learnings
+
+  resources :learnings do
+    collection do
+      get :history
+      post :relearn
+      post :check_item
+    end
+  end
+
 
   devise_for :users, controllers: {
         registrations: 'users/registrations'

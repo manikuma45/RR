@@ -1,4 +1,4 @@
-<h1>Learnings#index</h1>
+<h1>Learnins#history</h1>
 
 <% "nav.justify-content-end" %>
 
@@ -27,12 +27,10 @@
       <td><%= lbl.label.label_name %><br></td>
     <% end %>
 
+    <td><%= link_to "Revert", learning_path(l.id), method: :revert %></td>
+
     <td><%= link_to 'Delete', learning_path(l.id), method: :delete, data: { confirm: '項目を削除します' } %></td>
-    <td><%= link_to "Relearn", relearn_learnings_path(l.id), method: :relearn %></td>
-
     <td><%= link_to "Edit", edit_learning_path(l.id) %></td>
-    <td><%= link_to "Check", check_item_learnings_path(l.id), method: :check_item %></td>
-
   </tr>
 <% end %>
 </table>

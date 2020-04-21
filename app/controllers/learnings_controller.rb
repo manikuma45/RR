@@ -11,21 +11,54 @@ class LearningsController < ApplicationController
     end
   end
 
+  def history
+    if current_user.present?
+      @q = current_user.learnings.ransack(params[:q])
+      @learnings = @q.result(distinct: true).page(params[:page])
+    else
+      redirect_to login_url, notice: "Please log in."
+    end
+  end
+
   def new
     @learning = Learning.new
   end
 
   def create
-      @learning = current_user.learnings.create(learning_params)
-    if @learning.save!
-      redirect_to learnings_url, notice: "項目「#{@learning.title}」を登録しました。"
-    else
-      render :new
-    end
+    @learning = current_user.learnings.create(learning_params)
+      if @learning.save!
+        redirect_to learnings_url, notice: "項目「#{@learning.title}」を登録しました。"
+      else
+        render :new
+      end
   end
 
   def check_item
-    
+    @learnings.checked_times + 1
+    @learnings.checked_on = Date.today
+      case @learnings.checked_times
+        when 1
+          @learnings.reappearance_date = @learnings.created_on+1
+        when 2
+          @learnings.reappearance_date = @learnings.created_on+3
+        when 3
+          @learnings.reappearance_date = @learnings.created_on+7
+        when 4
+          @learnings.reappearance_date = @learnings.created_on+14
+        else
+          @learnings.reappearance_date = @learnings.created_on+30
+        end
+        #学習項目を履歴ページに移動する？その日にチェックしたものや翌日以降にチェックまちのものを履歴ビューでみせればいいか
+        #checked_onが今日と＝＝のものをindexの表示項目から除けばいい
+  end
+
+  def relearn
+    @learnings.checked_times = 0
+    redirect_to learnings_path, notice: "項目「#{@learnings.title}を再学習します。"
+  end
+
+  def revert
+    @learnings.checked_on = Date.today-1
   end
 
   def show
