@@ -6,6 +6,39 @@
 
 <%= link_to 'new item', new_learning_path, class: 'btn btn-primary' %>
 
+<%= search_form_for @q do |f| %>
+  <%# #conditions
+  #conditionsやattributesのようにコレクションになるものに対しては、`f.condition_fields`などの`f.*_fields`を利用してね。
+  #params[:q][:c]["0"]に対応するよ("0"はコレクションの連番の1つ目を表すよ。) %>
+  <%= f.condition_fields do |c| %>
+
+    <%# # attributes
+    # params[:q][:c]["0"][:a]に対応するよ。 %>
+    <%= c.attribute_fields do |a| %>
+    
+      <%# # 属性のセレクトボックスだよ。
+      # `id`などの全ての属性が選択可能だよ。
+      # params[:q][:c]["0"][:a]["0"][:name]に対応するよ。 %>
+      <%= a.attribute_select %>
+    <% end %>
+
+    <%# # predicate
+    # 述語のセレクトボックスだよ。
+    # `eq`などの全ての述語が選択可能だよ。
+    # params[:q][:c]["0"][:p]に対応するよ。 %>
+    <%= c.predicate_select %>
+<%#
+    # values
+    # params[:q][:c]["0"][:v]に対応するよ。 %>
+    <%= c.value_fields do |v| %>
+      <%# # 値のサーチフィールドだよ。
+      # params[:q][:c]["0"][:v]["0"]["value"]に対応するよ。 %>
+      <%= v.search_field :value %>
+    <% end %>
+  <% end %>
+  <%= f.submit %>
+<% end %>
+
 <hr style="margin:0.5rem;">
   <%= paginate @learnings %>
   <%= page_entries_info @learnings %>

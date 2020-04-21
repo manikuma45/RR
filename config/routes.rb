@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :learnings do
     collection do
       get :history
+      get :search
       post :relearn
       post :check_item
     end

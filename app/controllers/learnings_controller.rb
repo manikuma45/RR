@@ -5,6 +5,10 @@ class LearningsController < ApplicationController
   def index
     if current_user.present?
       @q = current_user.learnings.ransack(params[:q])
+
+      #検索クエリ用
+      @q.build_condition if @q.conditions.empty?
+
       @learnings = @q.result(distinct: true).page(params[:page])
     else
       redirect_to login_url, notice: "Please log in."
@@ -18,6 +22,11 @@ class LearningsController < ApplicationController
     else
       redirect_to login_url, notice: "Please log in."
     end
+  end
+
+  def search
+    @q = current_user.learnings.search(search_params)
+    @learnings = @q.result(distinct: true)
   end
 
   def new
@@ -97,5 +106,9 @@ class LearningsController < ApplicationController
                                      :checked_on,
                                      :reappearance_date,
                                      :checked_times)
+  end
+
+  def search_params
+    params.require(:q).permit!
   end
 end
