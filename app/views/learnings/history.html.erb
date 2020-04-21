@@ -1,9 +1,14 @@
+<div class="container">
+
 <h1>Learnings#history</h1>
 
 <% "nav.justify-content-end" %>
 
 <%= link_to 'new item', new_learning_path, class: 'btn btn-primary' %>
-
+<hr style="margin:0.5rem;">
+  <%= paginate @learnings %>
+  <%= page_entries_info @learnings %>
+<hr style="margin:0.5rem;">
 <table>
   <tr>
     <th>created_on</th>
@@ -34,3 +39,5 @@
   </tr>
 <% end %>
 </table>
+
+</div>
