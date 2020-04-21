@@ -1,7 +1,6 @@
 # README
 
-# 作品名
-RR (Recurring Reminder)
+# 作品名 RR (Recurring Reminder)
 
 ## 概要
 忘却曲線理論を参考にした、暗記学習を助けるメモとブックマークのサービスです。

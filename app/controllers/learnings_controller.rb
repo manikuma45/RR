@@ -24,6 +24,10 @@ class LearningsController < ApplicationController
     end
   end
 
+  def check_item
+    
+  end
+
   def show
   end
 
