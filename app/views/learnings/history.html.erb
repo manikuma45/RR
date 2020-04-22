@@ -6,7 +6,7 @@
 
 <%= link_to 'new item', new_learning_path, class: 'btn btn-primary' %>
 
-<%= search_form_for @q do |f| %>
+<%= search_form_for @q, :url => history_learnings_path do |f| %>
   <%= f.label :"" %>
   <%= f.search_field :title_or_main_content_or_sub_content_or_labels_label_name_cont %>
   <%= f.submit %>
@@ -18,8 +18,9 @@
 <hr style="margin:0.5rem;">
 <table>
   <tr>
-    <th>created_on</th>
     <th>title</th>
+    <th>checked_times</th>
+    <th>created_on</th>
     <th>url_info</th>
     <th>main_content </th>
     <th>sub_content</th>
@@ -28,8 +29,9 @@
   </tr>
 <% @learnings.each do |l| %>
   <tr>
-    <td><%= simple_date(l.created_on) %></td>
     <td><%= l.title %></td>
+    <td><%= l.checked_times %></td>
+    <td><%= simple_date(l.created_on) %></td>
     <td><%= link_to 'URL', l.url_info, target: :_blank %></td>
     <td><%= l.main_content %></td>
     <td><%= l.sub_content %></td>
@@ -39,7 +41,7 @@
       <td><%= lbl.label.label_name %><br></td>
     <% end %>
 
-    <td><%= link_to "Revert", learning_path(l.id), method: :revert %></td>
+    <td><%= link_to "Relearn", relearn_learning_path(l.id), method: :relearn %></td>
 
     <td><%= link_to 'Delete', learning_path(l.id), method: :delete, data: { confirm: '項目を削除します' } %></td>
     <td><%= link_to "Edit", edit_learning_path(l.id) %></td>
