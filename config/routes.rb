@@ -5,11 +5,13 @@ Rails.application.routes.draw do
     collection do
       get :history
       get :search
-      post :relearn
-      post :revert
+      # post :relearn
+      # post :revert
     end
     member do
       post :check_item
+      post :relearn
+
     end
   end
 

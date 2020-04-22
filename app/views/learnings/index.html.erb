@@ -43,7 +43,7 @@
     <% end %>
 
     <td><%= link_to 'Delete', learning_path(l.id), method: :delete, data: { confirm: '項目を削除します' } %></td>
-    <td><%= link_to "Relearn", relearn_learnings_path(l.id), method: :relearn %></td>
+    <td><%= link_to "Relearn", relearn_learning_path(l.id), method: :relearn %></td>
 
     <td><%= link_to "Edit", edit_learning_path(l.id) %></td>
     <td><%= link_to "Check", check_item_learning_path(l.id), method: :check_item %></td>
