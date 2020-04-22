@@ -5,17 +5,23 @@ class LearningsController < ApplicationController
   def index
     if current_user.present?
 
-      @q = current_user.learnings.ransack(params[:q])
+# @q = Learning.where(checked_times: 0).or(reappearance_date <= Date.today)
+
+# @q = Learning.where(reappearance_date: Time.zone.today.beginning_of_day..Time.zone.today-100.end_of_day).to_sql
+
+
+@q = current_user.learnings.where(reappearance_date: "1900-01-01".to_date..Time.zone.today).or(current_user.learnings.where(checked_times: 0).ransack(params[:q])
+
+@learnings = @q.result(distinct: true).page(params[:page])
+
+      # @q = current_user.learnings.ransack(params[:q])
 
       #検索クエリ初回用？
       # @q.build_condition if @q.conditions.empty?
 
       #ログイン中ユーザーの、チェック回数が０，あるいはreappearance_dateがDate.todayより古いものだけを取り出す
+      # @learnings = @q.where(checked_times: 0).or(reappearance_date <= Date.today)
 
-      # if @q.checked_times == 0 || @q.reappearance_date <= Date.today
-        @learnings = @q.result(distinct: true).page(params[:page]).order(created_on: "DESC")
-      # end
-# binding.irb
     else
       redirect_to login_url, notice: "Please log in."
     end
@@ -41,20 +47,16 @@ class LearningsController < ApplicationController
       case @learning.checked_times
         when 1
           @learning.reappearance_date = @learning.created_on + 86400
-          @learning.save
         when 2
           @learning.reappearance_date = @learning.created_on + 3*86400
-          @learning.save
         when 3
           @learning.reappearance_date = @learning.created_on + 7*86400
-          @learning.save
         when 4
           @learning.reappearance_date = @learning.created_on + 14*86400
-          @learning.save
         else
           @learning.reappearance_date = @learning.created_on + 30*86400
-          @learning.save
       end
+    @learning.save
     redirect_to learnings_path
   end
 
@@ -97,6 +99,7 @@ class LearningsController < ApplicationController
   end
 
   def destroy
+    binding.irb
     @learning.destroy
     redirect_to learnings_path, notice:"項目を削除しました"
   end

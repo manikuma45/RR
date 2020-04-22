@@ -9,6 +9,7 @@ class Learning < ApplicationRecord
   # validates :image, length: { maximum: 1000 }
 
   attribute :checked_times, :integer, default: 0
+  attribute :reappearance_date, :date, default: Date.today + 36500
 
   mount_uploader :image, ImageUploader
 
