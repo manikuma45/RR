@@ -11,13 +11,11 @@ class LearningsController < ApplicationController
   end
 
   def search
-    # binding.irb
     @q = current_user.learnings.search(search_params)
     @learnings = @q.result(distinct: true).page(params[:page])
   end
 
   def history
-    # binding.irb
     if current_user.present?
       #履歴なのでログイン中ユーザのすべての学習項目を表示する
       @q = current_user.learnings.page(params[:page]).ransack(params[:q])
@@ -92,7 +90,6 @@ class LearningsController < ApplicationController
   private
 
   def set_learning
-    # @learning = Learning.find(params[:id])
     @learning = current_user.learnings.find(params[:id])
   end
 
