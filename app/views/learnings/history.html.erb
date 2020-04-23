@@ -16,6 +16,11 @@
   <%= paginate @learnings %>
   <%= page_entries_info @learnings %>
 <hr style="margin:0.5rem;">
+
+
+
+
+<!--
 <table>
   <tr>
     <th>title</th>
@@ -26,25 +31,55 @@
     <th>sub_content</th>
     <th>image</th>
     <th>label</th>
-  </tr>
-<% @learnings.each do |l| %>
-  <tr>
-    <td><%= l.title %></td>
-    <td><%= l.checked_times %></td>
-    <td><%= simple_date(l.created_on) %></td>
-    <td><%= link_to 'URL', l.url_info, target: :_blank %></td>
-    <td><%= l.main_content %></td>
-    <td><%= l.sub_content %></td>
-    <td><%= image_tag(l.image.url) if l.image && l.image.url %></td>
+  </tr> -->
+
+</div>
+
+
+
+
+  <div class="container">
+
+    <!-- 親要素cardクラスを定義する -->
+  <div class="card" style="max-width: 25rem;">
+    <% @learnings.each do |l| %>
+
+    <!-- カード見出し：card-title -->
+    <h4 class="card-title">カードの見出し</h4>
+    <%= l.title %>
+
+    <!-- カード本文：card-body -->
+    <div class="card-body">
+      <%= l.main_content %>
+
+      <!-- カードの内容文：card-text -->
+      <p class="card-text">カードの内容文が入ります。</p>
+
+
+
+  <a href="#" class="btn btn-primary"><%= link_to "Relearn", relearn_learning_path(l.id), method: :relearn, data: { confirm: '項目を削除します' } %></a>
+  <a href="#" class="btn btn-primary"><%= link_to 'Delete', learning_path(l.id), method: :delete, data: { confirm: '項目を削除します' } %></a>
+  <a href="#" class="btn btn-primary">ボタン</a>
+  <a href="#" class="btn btn-primary">ボタン</a>
+
+
+    </div>
+  </div>
+
+
+
+    <%= l.checked_times %>
+    <%= simple_date(l.created_on) %>
+    <%= link_to 'URL', l.url_info, target: :_blank %>
+    <%= l.sub_content %>
+    <%= image_tag(l.image.url) if l.image && l.image.url %>
 
     <% l.labelings.each do |lbl| %>
-      <td><%= lbl.label.label_name %><br></td>
+      <%= lbl.label.label_name %><br>
     <% end %>
 
-    <td><%= link_to "Relearn", relearn_learning_path(l.id), method: :relearn %></td>
 
-    <td><%= link_to 'Delete', learning_path(l.id), method: :delete, data: { confirm: '項目を削除します' } %></td>
-    <td><%= link_to "Edit", edit_learning_path(l.id) %></td>
+    <%= link_to "Edit", edit_learning_path(l.id) %>
   </tr>
 <% end %>
 </table>
