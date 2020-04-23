@@ -27,7 +27,7 @@
     <% @learnings.each do |l| %>
 
 <!-- カード見出し：card-title -->
-    <h4 class="card-header "><%= l.title %></h4>
+    <h4 class="card-header"><%= l.title %></h4>
 
       <!-- カード本文：card-body -->
       <div class="card-body">
@@ -40,11 +40,13 @@
   <p class="card-text"><%= link_to 'URL', l.url_info, target: :_blank  unless l.url_info.blank? %></p>
 </div>
 
-        <p class="card-text d-flex justify-content-end">
-          <% l.labelings.each do |lbl| %>
-            <%= lbl.label.label_name %><br>
-          <% end %>
-        </p>
+        <div class="card-text d-flex flex-wrap">
+            <% l.labelings.each do |lbl| %>
+            <div class="flex-wrap">
+              <%= lbl.label.label_name %>
+            </div>
+            <% end %>
+        </div>
 
 
         <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
