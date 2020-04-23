@@ -2,8 +2,6 @@
 
 <h1>Learnings#index</h1>
 
-<% "nav.justify-content-end" %>
-
 <%= link_to 'new item', new_learning_path, class: 'btn btn-primary' %>
 
 <hr style="margin:0.5rem;">
@@ -11,10 +9,8 @@
   <%= page_entries_info @learnings %>
 <hr style="margin:0.5rem;">
 
-
 </div>
 
-<br>
   <div class="container-fluid">
 
 <div class="row">
@@ -27,25 +23,21 @@
     <% @learnings.each do |l| %>
 
 <!-- カード見出し：card-title -->
-    <h4 class="card-header"><%= l.title %></h4>
+
+    <div class="card-header h4">
+      <%= l.title %>
+    </div>
+
 
       <!-- カード本文：card-body -->
       <div class="card-body">
 
-<div class="d-flex justify-content-center">
-  <p class="card-text"><%= image_tag(l.image.url) if l.image && l.image.url %></p>
-</div>
+        <div class="d-flex justify-content-center">
+          <p class="card-text"><%= image_tag(l.image.url) if l.image && l.image.url %></p>
+        </div>
 
-<div class="d-flex justify-content-center">
-  <p class="card-text"><%= link_to 'URL', l.url_info, target: :_blank  unless l.url_info.blank? %></p>
-</div>
-
-        <div class="card-text d-flex flex-wrap">
-            <% l.labelings.each do |lbl| %>
-            <div class="flex-wrap">
-              <%= lbl.label.label_name %>
-            </div>
-            <% end %>
+        <div class="d-flex justify-content-center">
+          <p class="card-text"><%= link_to 'URL', l.url_info, target: :_blank  unless l.url_info.blank? %></p>
         </div>
 
 
@@ -65,16 +57,23 @@
           <!-- アコーディオン閉じる? -->
         </div>
 
-        <!-- カードボディ閉じる -->
-
-<div class="d-flex">
-<div class="card-text mr-auto">チェック回数：<%= l.checked_times %></div>
-<div><%= simple_date(l.created_on) %>作成</div>
-</div>
-
+        <div class="card-text d-flex flex-wrap">
+            <% l.labelings.each do |lbl| %>
+            <div class="flex-wrap">
+              <%= lbl.label.label_name %>
+            </div>
+            <% end %>
         </div>
 
-        <div class="card-footer">
+        <div class="d-flex">
+          <div class="card-text mr-auto">チェック回数：<%= l.checked_times %></div>
+          <div><%= simple_date(l.created_on) %>作成</div>
+        </div>
+
+        <!-- カードボディ閉じる -->
+      </div>
+
+        <div class="card-footer bg-transparent">
           <div class="btn-group d-flex justify-content-around" role="group">
               <%= link_to('Delete', learning_path(l.id),
                   { method: :delete,
@@ -101,10 +100,13 @@
           </div>
           <!-- カードフッター閉じる -->
         </div>
+
     <% end %>
 
   <!-- カードクラス閉じる -->
 </div>
+
+
 
 </div>
 
