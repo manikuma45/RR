@@ -17,8 +17,13 @@
 <br>
   <div class="container-fluid">
 
+<div class="row">
+
+<div class="col-md-9">
+
+
     <!-- 親要素cardクラスを定義する -->
-  <div class="card">
+  <div class="card mb-3">
     <% @learnings.each do |l| %>
 
 <!-- カード見出し：card-title -->
@@ -27,16 +32,20 @@
       <!-- カード本文：card-body -->
       <div class="card-body">
 
-        <p class="card-text">チェック回数：<%= l.checked_times %></p>
-        <p class="card-text"><%= simple_date(l.created_on) %>作成</p>
-        <p class="card-text"><%= image_tag(l.image.url) if l.image && l.image.url %></p>
-        <p class="card-text"><%= link_to 'URL', l.url_info, target: :_blank  unless l.url_info.blank? %></p>
+<div class="d-flex justify-content-center">
+  <p class="card-text"><%= image_tag(l.image.url) if l.image && l.image.url %></p>
+</div>
 
-        <p class="card-text">
+<div class="d-flex justify-content-center">
+  <p class="card-text"><%= link_to 'URL', l.url_info, target: :_blank  unless l.url_info.blank? %></p>
+</div>
+
+        <p class="card-text d-flex justify-content-end">
           <% l.labelings.each do |lbl| %>
             <%= lbl.label.label_name %><br>
           <% end %>
         </p>
+
 
         <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
 
@@ -55,38 +64,51 @@
         </div>
 
         <!-- カードボディ閉じる -->
+
+<div class="d-flex">
+<div class="card-text mr-auto">チェック回数：<%= l.checked_times %></div>
+<div><%= simple_date(l.created_on) %>作成</div>
+</div>
+
         </div>
 
         <div class="card-footer">
-          <div class="btn-group" role="group">
-          <%= link_to('Delete', learning_path(l.id),
-              { method: :delete,
-                data: { confirm: "項目#{l.title}を削除します"},
-                class: "btn btn-info"
-              }
-            )
-          %>
-          <%= link_to("Relearn", relearn_learning_path(l.id),
-              { method: :relearn,
-                data: { confirm: "項目#{l.title}を再学習します"},
-                class: "btn btn-info"
-              }
-            )
-          %>
-          <%= link_to "Edit", edit_learning_path(l.id), class: "btn btn-info" %>
+          <div class="btn-group d-flex justify-content-around" role="group">
+              <%= link_to('Delete', learning_path(l.id),
+                  { method: :delete,
+                    data: { confirm: "項目#{l.title}を削除します"},
+                    class: "btn btn-info"
+                  }
+                )
+              %>
+              <%= link_to("Relearn", relearn_learning_path(l.id),
+                  { method: :relearn,
+                    data: { confirm: "項目#{l.title}を再学習します"},
+                    class: "btn btn-info"
+                  }
+                )
+              %>
+              <%= link_to "Edit", edit_learning_path(l.id), class: "btn btn-info" %>
 
-          <%= link_to "Check", check_item_learning_path(l.id),
-              { method: :check_item,
-                class: "btn btn-success"
-              }
-          %>
-          <!-- ボタングループ閉じる -->
+              <%= link_to "Check", check_item_learning_path(l.id),
+                  { method: :check_item,
+                    class: "btn btn-success"
+                  }
+              %>
+              <!-- ボタングループ閉じる -->
+          </div>
+          <!-- カードフッター閉じる -->
         </div>
-        <!-- カードフッター閉じる -->
-      </div>
     <% end %>
 
   <!-- カードクラス閉じる -->
 </div>
+
+</div>
+
+</div>
+
+
+
 <!-- カード部分のコンテナを閉じる -->
 </div>
