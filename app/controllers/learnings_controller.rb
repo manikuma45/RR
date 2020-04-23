@@ -17,7 +17,6 @@ class LearningsController < ApplicationController
 
   def history
     if current_user.present?
-      #履歴なのでログイン中ユーザのすべての学習項目を表示する
       @q = current_user.learnings.page(params[:page]).ransack(params[:q])
       @learnings = @q.result(distinct: true).page(params[:page])
     else
@@ -41,7 +40,7 @@ class LearningsController < ApplicationController
           @learning.reappearance_date = @learning.created_on + 30*86400
       end
     @learning.save
-    redirect_to learnings_path
+    redirect_to learnings_path, notice: "次回学習日 #{@learning.reappearance_date}"
   end
 
   def relearn

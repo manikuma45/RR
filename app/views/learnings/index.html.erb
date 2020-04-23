@@ -11,53 +11,54 @@
   <%= page_entries_info @learnings %>
 <hr style="margin:0.5rem;">
 
-<!-- <table>
-  <tr>
-    <th>title</th>
-    <th>checked_times</th>
-    <th>created_on</th>
-    <th>url_info</th>
-    <th>main_content </th>
-    <th>sub_content</th>
-    <th>image</th>
-    <th>label</th>
-  </tr> -->
 
 </div>
 
-
-  <div class="container">
+<br>
+  <div class="container-fluid">
 
     <!-- 親要素cardクラスを定義する -->
-  <div class="card" style="max-width: 25rem;">
+  <div class="card">
     <% @learnings.each do |l| %>
+
+<!-- カード見出し：card-title -->
+    <h4 class="card-header "><%= l.title %></h4>
 
       <!-- カード本文：card-body -->
       <div class="card-body">
 
-        <!-- カード見出し：card-title -->
-        <h4 class="card-title"><%= l.title %></h4>
-
-        <!-- カードの内容文：card-text -->
-        <p class="card-text"><%= l.main_content %></p>
-
-        <p class="card-text"><%= l.checked_times %></p>
-
-        <p class="card-text"><%= simple_date(l.created_on) %></p>
-
+        <p class="card-text">チェック回数：<%= l.checked_times %></p>
+        <p class="card-text"><%= simple_date(l.created_on) %>作成</p>
+        <p class="card-text"><%= image_tag(l.image.url) if l.image && l.image.url %></p>
         <p class="card-text"><%= link_to 'URL', l.url_info, target: :_blank  unless l.url_info.blank? %></p>
 
-        <p class="card-text"><%= l.sub_content %></p>
-        <p class="card-text"><%= image_tag(l.image.url) if l.image && l.image.url %></p>
+        <p class="card-text">
+          <% l.labelings.each do |lbl| %>
+            <%= lbl.label.label_name %><br>
+          <% end %>
+        </p>
 
-        <% l.labelings.each do |lbl| %>
-          <%= lbl.label.label_name %><br>
-        <% end %>
+        <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+
+          <div role="tab" id="list1">
+
+            <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#list1items" aria-expanded="true" aria-controls="list1items">本文を読む</button>
+
+
+            <div id="list1items" class="collapse" role="tabpanel" aria-labelledby="list1" data-parent="#accordion">
+                <p class="card-text"><%= l.main_content %></p>
+                <p class="card-text"><%= l.sub_content %></p>
+            </div>
+          </div>
+
+          <!-- アコーディオン閉じる? -->
+        </div>
+
+        <!-- カードボディ閉じる -->
+        </div>
 
         <div class="card-footer">
-
           <div class="btn-group" role="group">
-
           <%= link_to('Delete', learning_path(l.id),
               { method: :delete,
                 data: { confirm: "項目#{l.title}を削除します"},
@@ -65,7 +66,6 @@
               }
             )
           %>
-
           <%= link_to("Relearn", relearn_learning_path(l.id),
               { method: :relearn,
                 data: { confirm: "項目#{l.title}を再学習します"},
@@ -73,7 +73,6 @@
               }
             )
           %>
-
           <%= link_to "Edit", edit_learning_path(l.id), class: "btn btn-info" %>
 
           <%= link_to "Check", check_item_learning_path(l.id),
@@ -81,9 +80,13 @@
                 class: "btn btn-success"
               }
           %>
+          <!-- ボタングループ閉じる -->
         </div>
-
+        <!-- カードフッター閉じる -->
       </div>
     <% end %>
-  </div>
+
+  <!-- カードクラス閉じる -->
+</div>
+<!-- カード部分のコンテナを閉じる -->
 </div>
