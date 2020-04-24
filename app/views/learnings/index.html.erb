@@ -8,9 +8,8 @@ $('h1').css('color','green');    // jQuery動作確認コード
 
 <div class="container">
 
-<h1>Learnings#index</h1>
-
-<%= link_to 'new item', new_learning_path, class: 'btn btn-primary' %>
+<h1>学習項目一覧</h1>
+<br>
 
 <hr style="margin:0.5rem;">
   <%= paginate @learnings %>
@@ -54,7 +53,7 @@ $('h1').css('color','green');    // jQuery動作確認コード
 
             <div class="card-header h4" id="headingOne">
               <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">本文を読む
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 本文を読む
                 </button>
               </h5>
             </div>
