@@ -13,7 +13,7 @@
 
 <div class="col-md-9">
 
-  <% @learnings.each do |l| %>
+  <% @learnings.each_with_index do |l, index| %>
 
     <!-- 親要素cardクラスを定義する -->
   <div class="card mb-3">
@@ -42,12 +42,12 @@
 
             <div class="card-header h4  bg-transparent" id="headingOne">
               <h5 class="mb-0">
-                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 本文を読む
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_<%= index %>" aria-expanded="true" aria-controls="collapse_<%= index %>"> 本文を読む
                 </button>
               </h5>
             </div>
 
-            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+            <div id="collapse_<%= index %>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
               <div class="card-body bg-light">
                 <p class="card-text"><%= l.main_content %></p>
                 <p class="card-text"><%= l.sub_content %></p>
