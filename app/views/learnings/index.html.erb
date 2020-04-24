@@ -1,30 +1,16 @@
 <div class="container">
-
-<h1>学習項目一覧</h1>
-<br>
-
-
+  <h1>学習項目一覧</h1>
+  <br>
 
 </div>
-
-  <div class="container-fluid">
-
+<div class="container-fluid">
 <div class="row">
-
 <div class="col-md-9">
 
   <% @learnings.each_with_index do |l, index| %>
-
-    <!-- 親要素cardクラスを定義する -->
   <div class="card mb-3">
-
-<!-- カード見出し：card-title -->
     <div class="card-header h4"><%= l.title %></div>
-
-      <!-- カード本文：card-body -->
       <div class="card-body">
-
-
         <div class="d-flex justify-content-center">
           <p class="card-text"><%= image_tag(l.image.url) if l.image && l.image.url %></p>
         </div>
@@ -33,13 +19,8 @@
           <p class="card-text"><%= link_to 'URL', l.url_info, target: :_blank  unless l.url_info.blank? %></p>
         </div>
 
-
-
-
         <div class="accordion d-flex justify-content-center" id="accordion">
-
           <div class="card w-100 border-white">
-
             <div class="card-header h4  bg-transparent" id="headingOne">
               <h5 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_<%= index %>" aria-expanded="true" aria-controls="collapse_<%= index %>"> 本文を読む
@@ -53,9 +34,7 @@
                 <p class="card-text"><%= l.sub_content %></p>
               </div>
             </div>
-
           </div>
-          <!-- アコーディオン閉じる -->
         </div>
 
         <div class="card-text d-flex flex-wrap">
@@ -70,9 +49,6 @@
           <div class="card-text mr-auto">チェック回数：<%= l.checked_times %></div>
           <div><%= simple_date(l.created_on) %>作成</div>
         </div>
-
-
-        <!-- カードボディ閉じる -->
       </div>
 
         <div class="card-footer bg-transparent">
@@ -98,23 +74,14 @@
                     class: "btn btn-success"
                   }
               %>
-              <!-- ボタングループ閉じる -->
           </div>
-          <!-- カードフッター閉じる -->
         </div>
-
-
-  <!-- カードクラス閉じる -->
-</div>
+      </div>
 
 <% end %>
 
 </div>
 </div>
-
-
-
-<!-- カード部分のコンテナを閉じる -->
 </div>
 
 <br>

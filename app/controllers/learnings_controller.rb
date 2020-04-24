@@ -4,7 +4,7 @@ class LearningsController < ApplicationController
 
   def index
     if current_user.present?
-      @learnings = current_user.learnings.where(reappearance_date: "1900-01-01".to_date..Time.zone.today).or(current_user.learnings.where(checked_times: 0)).page(params[:page]).per(10)
+      @learnings = current_user.learnings.where(reappearance_date: "1900-01-01".to_date..Time.zone.today).or(current_user.learnings.where(checked_times: 0)).page(params[:page]).per(10).order("created_on")
     else
       redirect_to login_url, notice: "Please log in."
     end
@@ -18,7 +18,7 @@ class LearningsController < ApplicationController
   def history
     if current_user.present?
       @q = current_user.learnings.page(params[:page]).ransack(params[:q])
-      @learnings = @q.result(distinct: true).page(params[:page]).per(10)
+      @learnings = @q.result(distinct: true).page(params[:page]).per(10).per(10).order("created_on")
     else
       redirect_to login_url, notice: "Please log in."
     end
