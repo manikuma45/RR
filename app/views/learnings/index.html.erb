@@ -11,12 +11,6 @@ $('h1').css('color','green');    // jQuery動作確認コード
 <h1>学習項目一覧</h1>
 <br>
 
-<br>
-<hr style="margin:0.5rem;">
-  <%= paginate @learnings %>
-  <%= page_entries_info @learnings %>
-<hr style="margin:0.5rem;">
-<br>
 </div>
 
   <div class="container-fluid">
@@ -128,3 +122,10 @@ $('h1').css('color','green');    // jQuery動作確認コード
 
 <!-- カード部分のコンテナを閉じる -->
 </div>
+
+<br>
+<hr style="margin:0.5rem;">
+  <%= paginate @learnings %>
+  <%= page_entries_info @learnings %>
+<hr style="margin:0.5rem;">
+<br>
