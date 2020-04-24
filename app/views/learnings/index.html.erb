@@ -1,31 +1,3 @@
-<!--
-<script type="text/javascript">
-  $(function() {
-$('h1').css('color','green');    // jQuery動作確認コード
-  });
-</script> -->
-
-<!-- <script type="text/javascript">
-  alert("Hello");
-</script> -->
-
-
-<script language="javascript" type="text/javascript">
-    function OnButtonClick() {
-        target = document.getElementById("output");
-        target.innerHTML = "testinput";
-    }
-</script>
-
-<input type="button" value="testinput" onclick="OnButtonClick();"/><br />
-
-<div id="output"></div>
-
-
-
-
-
-
 <div class="container">
 
 <h1>学習項目一覧</h1>
@@ -66,9 +38,9 @@ $('h1').css('color','green');    // jQuery動作確認コード
 
         <div class="accordion d-flex justify-content-center" id="accordion">
 
-          <div class="card">
+          <div class="card w-100 border-white">
 
-            <div class="card-header h4" id="headingOne">
+            <div class="card-header h4  bg-transparent" id="headingOne">
               <h5 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"> 本文を読む
                 </button>
@@ -76,7 +48,7 @@ $('h1').css('color','green');    // jQuery動作確認コード
             </div>
 
             <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-              <div class="card-body">
+              <div class="card-body bg-light">
                 <p class="card-text"><%= l.main_content %></p>
                 <p class="card-text"><%= l.sub_content %></p>
               </div>
