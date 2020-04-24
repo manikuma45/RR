@@ -44,6 +44,8 @@ gem 'mini_magick'
 
 gem 'kaminari'
 gem 'ransack'
+gem 'bootstrap'
+gem 'jquery-rails'
 
 
 group :development, :test do
