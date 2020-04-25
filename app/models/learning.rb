@@ -6,6 +6,7 @@ class Learning < ApplicationRecord
   validates :main_content, length: { maximum: 1000 }
   validates :sub_content, length: { maximum: 1000 }
   validates :url_info, length: { maximum: 1000 }
+  validates :image, length: { maximum: 1000 }
   # validates :image, length: { maximum: 1000 }
 
   attribute :checked_times, :integer, default: 0

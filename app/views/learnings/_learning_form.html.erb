@@ -21,25 +21,26 @@
     <%= form.text_area :main_content %>
   </div>
 
-  <div class="actions">
-    <%= form.submit "Update", class: "btn btn-success" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :sub_content %><br>
-    <%= form.text_area :sub_content %>
-  </div>
-
   <div class="form-group">
     <%= form.label :url_info %><br>
     <%= form.text_field :url_info %>
   </div>
 
+  <div class="actions">
+    <%= form.submit "Update", class: "btn btn-success" %>
+  </div>
+
   <div class="form-group">
-    <%= form.label :image %>
-    <%= image_tag(@learning.image.url) if @learning.image && @learning.image.url %><br>
-    <%= form.file_field :image %>
-    <%= form.hidden_field :image_cache %>
+    <br>
+    <%= form.label :sub_content %><br>
+    <%= form.text_area :sub_content %>
+  </div>
+
+  <div class="form-group">
+    <% form.label :image %>
+    <% image_tag(@learning.image.url) if @learning.image && @learning.image.url %><br>
+    <% form.file_field :image %>
+    <% form.hidden_field :image_cache %>
   </div>
 
   <div class="form-group">
