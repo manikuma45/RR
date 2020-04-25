@@ -1,16 +1,13 @@
 ---
 ja:
   views:
-    devise:
-      registrations:
-        edit:
-          # leave blank if you don't want to change it: ぬ
-          # Cancel my account: 利用を終了する
       pagination:
         first: '最初'
         last: '最後'
+        Last: '最後'
         previous: '前'
         next: '次'
+        Next: '次'
         truncate: '...'
         Display Entries: 'a'
   learnings:

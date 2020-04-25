@@ -1,7 +1,11 @@
 <div class="container">
   <h1><%= t('.Index') %></h1>
   <br>
-
+  <br>
+  <hr style="margin:0.5rem;">
+    <%= paginate @learnings %>
+  <hr style="margin:0.5rem;">
+  <br>
 </div>
 <div class="container-fluid">
 <div class="row">
@@ -83,10 +87,3 @@
 </div>
 </div>
 </div>
-
-<br>
-<hr style="margin:0.5rem;">
-  <%= paginate @learnings %>
-  <%= page_entries_info @learnings %>
-<hr style="margin:0.5rem;">
-<br>

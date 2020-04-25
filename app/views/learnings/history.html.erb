@@ -1,15 +1,27 @@
 <div class="container">
+  <div class="row">
 
+  <div class="col">
   <h1><%= t('.Index') %></h1>
-<br>
-<%= search_form_for @q, :url => history_learnings_path do |f| %>
-  <%= f.label :"" %>
-  <%= f.search_field :title_or_main_content_or_sub_content_or_labels_label_name_cont %>
-  <%= f.submit '検索', class: "btn btn-secondary" %>
-<% end %>
+  </div>
 
-<br>
+  <div class="col">
+    <br>
+      <%= search_form_for @q, :url => history_learnings_path do |f| %>
+      <%= f.label :"" %>
+      <%= f.search_field :title_or_main_content_or_sub_content_or_labels_label_name_cont %>
+      <%= f.submit '検索', class: "btn btn-secondary" %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="col">
+    <br>
+    <%= paginate @learnings %>
+  </div>
+
 </div>
+
 <div class="container-fluid">
 <div class="row">
 <div class="col-md-9">
@@ -90,8 +102,3 @@
 </div>
 </div>
 </div>
-<br>
-<hr style="margin:0.5rem;">
-  <%= paginate @learnings %>
-  <%= page_entries_info @learnings %>
-<hr style="margin:0.5rem;">
