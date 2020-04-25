@@ -1,14 +1,14 @@
 <div class="container">
 
 <h1>学習項目履歴</h1>
-
+<br>
 <%= search_form_for @q, :url => history_learnings_path do |f| %>
   <%= f.label :"" %>
   <%= f.search_field :title_or_main_content_or_sub_content_or_labels_label_name_cont %>
   <%= f.submit %>
 <% end %>
 
-
+<br>
 </div>
 <div class="container-fluid">
 <div class="row">
