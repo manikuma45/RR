@@ -1,11 +1,11 @@
 <div class="container">
 
-<h1>学習項目履歴</h1>
+  <h1><%= t('.Index') %></h1>
 <br>
 <%= search_form_for @q, :url => history_learnings_path do |f| %>
   <%= f.label :"" %>
   <%= f.search_field :title_or_main_content_or_sub_content_or_labels_label_name_cont %>
-  <%= f.submit "Search", class: "btn btn-secondary" %>
+  <%= f.submit '検索', class: "btn btn-secondary" %>
 <% end %>
 
 <br>
@@ -60,23 +60,23 @@
 
         <div class="card-footer bg-transparent">
           <div class="btn-group d-flex justify-content-around" role="group">
-              <%= link_to('Delete', learning_path(l.id),
+              <%= link_to('削除', learning_path(l.id),
                   { method: :delete,
                     data: { confirm: "項目#{l.title}を削除します"},
                     class: "btn btn-info"
                   }
                 )
               %>
-              <%= link_to("Relearn", relearn_learning_path(l.id),
+              <%= link_to("再学習", relearn_learning_path(l.id),
                   { method: :relearn,
                     data: { confirm: "項目#{l.title}を再学習します"},
                     class: "btn btn-info"
                   }
                 )
               %>
-              <%= link_to "Edit", edit_learning_path(l.id), class: "btn btn-info" %>
+              <%= link_to "編集", edit_learning_path(l.id), class: "btn btn-info" %>
 
-              <%= link_to "Check", check_item_learning_path(l.id),
+              <%= link_to "チェック", check_item_learning_path(l.id),
                   { method: :check_item,
                     class: "btn btn-success"
                   }

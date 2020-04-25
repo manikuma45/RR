@@ -18,12 +18,10 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-    <% if @minimum_password_length %>
+    <%= f.label :password %>
+    <!-- <i>(leave blank if you don't want to change it)</i -->
       <br />
-      <em><%= @minimum_password_length %> characters minimum</em>
-    <% end %>
+    <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
   <div class="field">
@@ -32,23 +30,24 @@
   </div>
 
   <div class="field">
-    <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+    <%= f.label :current_password %>
+      <!-- <i>(we need your current password to confirm your changes)</i> -->
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
 <br>
   <div class="actions">
-    <%= f.submit "Update", class: "btn btn-success" %>
+    <%= f.submit "更新", class: "btn btn-success" %>
   </div>
 <% end %>
 <br>
 <br>
-<h3>Cancel my account</h3>
+<h4>利用を終了する</h4>
 
-<%= button_to "Cancel my account",
+<%= button_to "ユーザー情報削除",
                 registration_path(resource_name),
                 data: { confirm: "Are you sure?" },
                 method: :delete,
                 class: "btn btn-danger"
                  %>
 <br>
-<%= link_to "Back", :back, class: "btn btn-secondary" %>
+<%= link_to "戻る", :back, class: "btn btn-secondary" %>
