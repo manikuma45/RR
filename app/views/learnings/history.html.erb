@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="row">
+
+  <div class="col">
+  <h1><%= t('.Index') %></h1>
+  </div>
+
+  <div class="col">
+    <br>
+      <%= search_form_for @q, :url => history_learnings_path do |f| %>
+      <%= f.label :"" %>
+      <%= f.search_field :title_or_main_content_or_sub_content_or_labels_label_name_cont %>
+      <%= f.submit '検索', class: "btn btn-secondary" %>
+    <% end %>
+    </div>
+  </div>
+
+  <div class="col">
+    <br>
+    <%= paginate @learnings %>
+  </div>
+
+</div>
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-9">
+
+  <% @learnings.each_with_index do |l, index| %>
+  <div class="card mb-3">
+    <div class="card-header h4"><%= l.title %></div>
+      <div class="card-body">
+        <div class="d-flex justify-content-center">
+          <p class="card-text"><%= image_tag(l.image.url) if l.image && l.image.url %></p>
+        </div>
+
+        <div class="d-flex justify-content-center">
+          <p class="card-text"><%= link_to 'URL', l.url_info, target: :_blank  unless l.url_info.blank? %></p>
+        </div>
+
+        <div class="accordion d-flex justify-content-center" id="accordion">
+          <div class="card w-100 border-white">
+            <div class="card-header h4  bg-transparent" id="headingOne">
+              <h5 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse_<%= index %>" aria-expanded="true" aria-controls="collapse_<%= index %>"> 本文を読む
+                </button>
+              </h5>
+            </div>
+
+            <div id="collapse_<%= index %>" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+              <div class="card-body bg-light">
+                <p class="card-text"><%= l.main_content %></p>
+                <p class="card-text"><%= l.sub_content %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card-text d-flex flex-wrap">
+            <% l.labelings.each do |lbl| %>
+            <div class="flex-wrap">
+              <%= lbl.label.label_name %>
+            </div>
+            <% end %>
+        </div>
+
+        <div class="d-flex">
+          <div class="card-text mr-auto">チェック回数：<%= l.checked_times %></div>
+          <div><%= simple_date(l.created_on) %>作成</div>
+        </div>
+      </div>
+
+        <div class="card-footer bg-transparent">
+          <div class="btn-group d-flex justify-content-around" role="group">
+              <%= link_to('削除', learning_path(l.id),
+                  { method: :delete,
+                    data: { confirm: "項目#{l.title}を削除します"},
+                    class: "btn btn-info"
+                  }
+                )
+              %>
+              <%= link_to("再学習", relearn_learning_path(l.id),
+                  { method: :relearn,
+                    data: { confirm: "項目#{l.title}を再学習します"},
+                    class: "btn btn-info"
+                  }
+                )
+              %>
+              <%= link_to "編集", edit_learning_path(l.id), class: "btn btn-info" %>
+
+              <%= link_to "チェック", check_item_learning_path(l.id),
+                  { method: :check_item,
+                    class: "btn btn-success"
+                  }
+              %>
+          </div>
+        </div>
+      </div>
+
+<% end %>
+
+</div>
+</div>
+</div>

@@ -1,5 +1,20 @@
-<h1><%= '新しく覚える'%></h1>
+<div class="container">
+
+<div class="container-fluid">
+<div class="row">
+<div class="col-md-9">
+
+<h2><%= t('.New Item')%></h2>
 
 <%= render 'learning_form' %>
 
-<%= link_to '一覧へ戻る', learnings_path %>
+<br>
+<div class="btn-group">
+  <%= link_to '一覧に戻る', learnings_path, class: "btn btn-secondary" %>
+</div>
+
+</div>
+
+</div>
+</div>
+</div>
