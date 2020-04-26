@@ -1,14 +1,26 @@
 Rails.application.routes.draw do
+  root to: 'learnings#index'
 
+  resources :learnings do
+    collection do
+      get :history
+      get :search
+      # post :revert
+    end
+    member do
+      post :check_item
+      post :relearn
+    end
+  end
 
-  resources :learnings
+  devise_for :users, controllers: {
+        registrations: 'users/registrations'
+}
 
+  resources :users, only: [:show]
 
-  # get 'learnings/index'
-  # get 'learnings/show'
-  # get 'learnings/new'
-  # get 'learnings/create'
-  # get 'learnings/edit'
-  # get 'learnings/update'
-  # get 'learnings/destroy'
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
 end
