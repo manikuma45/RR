@@ -1,4 +1,5 @@
 FactoryBot.define do
+  
   factory :labeling do
     learning_id { 1 }
     label_id { 1 }
