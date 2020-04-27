@@ -60,7 +60,7 @@ class LearningsController < ApplicationController
 
   def create
     @learning = current_user.learnings.create(learning_params)
-      if @learning.save!
+      if @learning.save
         redirect_to learnings_url, notice: "項目「#{@learning.title}」を登録しました。"
       else
         render :new
