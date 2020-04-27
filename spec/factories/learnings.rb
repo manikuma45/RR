@@ -4,10 +4,11 @@ FactoryBot.define do
     title { 'Factoryで作った学習項目名1' }
       main_content { 'Factoryで作った学習内容1-1' }
       sub_content { 'Factoryで作った学習内容1-2' }
-      # url_info { '2020-06-01' }
+      url_info { 'https://diver.diveintocode.jp/submissions/20163' }
       created_on { '2020-04-27' }
       checked_times { 0 }
       reappearance_date { '' }
+      # image { 'https://diver.diveintocode.jp/submissions/20163' }
       association :user
   end
 
