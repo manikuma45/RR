@@ -2,13 +2,13 @@ FactoryBot.define do
 
   factory :learning do
     title { 'Factoryで作った学習項目名1' }
-    main_content { 'Factoryで作った学習内容1-1' }
-    sub_content { 'Factoryで作った学習内容1-2' }
-    # url_info { '2020-06-01' }
-    created_on { '2020-04-27' }
-    checked_times { 0 }
-    reappearance_date { '' }
-    association :user
+      main_content { 'Factoryで作った学習内容1-1' }
+      sub_content { 'Factoryで作った学習内容1-2' }
+      # url_info { '2020-06-01' }
+      created_on { '2020-04-27' }
+      checked_times { 0 }
+      reappearance_date { '' }
+      association :user
   end
 
   # factory :learning2, do
