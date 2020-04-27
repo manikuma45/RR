@@ -31,17 +31,17 @@ RSpec.describe 'Labels', type: :system do
         it "ラベルの貼られたタスクだけが画面に残ること" do
           user_b = FactoryBot.create(:user2)
           learning_a = FactoryBot.create(:learning, user: user_b)
-          learning_d = FactoryBot.create(:learning2, user: user_b)
-          learning_c = FactoryBot.create(:learning2, name: "Factoryで作った学習項目名3", user: user_b)
+          learning_d = FactoryBot.create(:learning, user: user_b)
+          learning_c = FactoryBot.create(:learning, title: "Factoryで作った学習項目名3", user: user_b)
           labeling_1 = FactoryBot.create(:labeling, learning_id: learning_a.id)
-          labeling_2 = FactoryBot.create(:labeling2, learning_id: learning_a.id)
-          labeling_3 = FactoryBot.create(:labeling3, learning_id: learning_a.id)
+          labeling_2 = FactoryBot.create(:labeling, learning_id: learning_a.id)
+          labeling_3 = FactoryBot.create(:labeling, learning_id: learning_a.id)
           visit root_path
           fill_in 'Email', with: 'sample_mail2@sample.com'
           fill_in 'session_password', with: 'password'
           fill_in 'session_password_conf', with: 'password'
           click_button 'Log in'
-          visit learnings_path
+          visit history_learnings_path
           sleep 0.5
           select 'sample1', from: 'label_id'
           click_on 'search'

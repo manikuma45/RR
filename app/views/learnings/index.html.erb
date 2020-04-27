@@ -20,6 +20,7 @@
           <p class="card-text"><%= link_to 'URL', l.url_info, target: :_blank  unless l.url_info.blank? %></p>
         </div>
 
+        <% unless l.main_content.blank? %>
         <div class="accordion d-flex justify-content-center" id="accordion">
           <div class="card w-100 border-white">
             <div class="card-header h4  bg-transparent" id="headingOne">
@@ -37,6 +38,8 @@
             </div>
           </div>
         </div>
+        <% end %>
+
 
         <div class="card-text d-flex flex-wrap">
             <% l.labelings.each do |lbl| %>
