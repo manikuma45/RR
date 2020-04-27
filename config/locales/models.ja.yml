@@ -9,3 +9,8 @@ ja:
         name: ユーザー名
         current_password: 現在のパスワード
       learning:
+        title: 項目名
+        main_content: 本文
+        sub_content: 備考
+        url_info: URL
+        label: 付箋

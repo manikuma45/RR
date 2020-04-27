@@ -21,4 +21,3 @@
 #                    url_info: "url#{i + 1}",
 #                    # user_id ()
 #                   )
-end
