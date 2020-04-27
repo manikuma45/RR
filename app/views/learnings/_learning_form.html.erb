@@ -27,7 +27,7 @@
   </div>
 
   <div class="actions">
-    <%= form.submit "保存", class: "btn btn-success" %>
+    <%= form.submit "保存", class: "btn btn-success", id: 12 %>
   </div>
 
   <div class="form-group">
@@ -37,9 +37,9 @@
   </div>
 
   <div class="form-group">
-    <% form.label :image %>
-    <% image_tag(@learning.image.url) if @learning.image && @learning.image.url %><br>
-    <% form.file_field :image %>
+    <%= form.label :image %>
+    <%= image_tag(@learning.image.url) if @learning.image && @learning.image.url %><br>
+    <%= form.file_field :image %>
     <% form.hidden_field :image_cache %>
   </div>
 
