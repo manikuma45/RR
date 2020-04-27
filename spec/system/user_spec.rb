@@ -41,7 +41,7 @@ end
     expect(page).to have_content '学習項目一覧'
   end
 
-  it "ユーザー情報画面からユーザー情報を編集する" do
+  it "ユーザー情報画面からユーザー編集画面を開き、情報を更新する" do
     user_a = FactoryBot.create(:user, name: "name_2", email: "sample2@sample.com")
     visit new_user_session_path
     fill_in 'user_email', with: 'sample2@sample.com'
