@@ -73,4 +73,24 @@ end
     expect(page).to have_content 'アカウント登録もしくはログインしてください。'
   end
 
+  it "テストユーザーaでログインしても、テストユーザーbの学習項目や情報は参照できない" do
+    user_a = FactoryBot.create(:user, name: "user_a", email: "sample1@sample.com")
+    user_b = FactoryBot.create(:user, name: "user_b", email: "sample2@sample.com")
+    learning_a = Learning.create(title: 'テスト学習項目名1',
+                                 user_id: user_a.id
+                               )
+    learning_b = Learning.create(title: 'テスト学習項目名2',
+                                 user_id: user_b.id
+                               )
+    visit new_user_session_path
+    fill_in 'user_email', with: 'sample1@sample.com'
+    fill_in 'user_password', with: 'password'
+    click_on 'ログインする'
+    click_on 'ログイン中ユーザー: sample1@sample.com'
+    expect(page).to_not have_content 'sample2@sample.com'
+    expect(page).to_not have_content 'テスト学習項目名2'
+    visit learnings_path(user_b.id)
+    expect(page).to_not have_content 'テスト学習項目名2'
+  end
+
 end
