@@ -97,7 +97,7 @@ RSpec.describe Learning, type: :system do
                                  main_content: 'テスト学習内容1-1',
                                  sub_content: 'テスト学習内容1-2',
                                  url_info: 'https://diver.diveintocode.jp/submissions/20163',
-                                 created_on: '2020-04-27',
+                                 created_on: '2020-05-01',
                                  checked_times: 0,
                                  reappearance_date: '',
                                  user_id: user_a.id
@@ -107,7 +107,7 @@ RSpec.describe Learning, type: :system do
     fill_in 'user_password', with: 'password'
     click_on 'ログインする'
     click_on 'チェック'
-    expect(page).to have_content '次回学習日 2020-04-28'
+    expect(page).to have_content '次回学習日 2020-05-02'
     expect(page).to_not have_content 'テスト学習項目名1'
     visit history_learnings_path
     expect(page).to have_content 'テスト学習項目名1'
