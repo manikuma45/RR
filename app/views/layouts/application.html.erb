@@ -9,10 +9,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-
-
   <body>
-
     <!-- ナビゲーションバー開始 -->
 <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
         <!-- サブコンポーネント -->
@@ -79,9 +76,7 @@
 </div>
 </nav>
 
-
   <div class="jumbotron fixed-bg">
-
       <ul style="list-style: none;">
         <% if flash.notice.present?%>
           <li><p class="alert alert-notice"><%= notice %></p></li>
@@ -89,9 +84,7 @@
           <li><p class="alert alert-error"><%= alert %></p></li>
         <% end %>
       </ul>
-
         <%= yield %>
-
       </div>
 
     <footer class="footer bg-dark fixed-bottom">
