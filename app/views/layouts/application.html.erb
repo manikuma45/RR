@@ -8,6 +8,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+
+
   <body>
 
     <!-- ナビゲーションバー開始 -->
@@ -76,7 +79,10 @@
 </div>
 </nav>
 
-    <div class="container">
+
+  <div class="jumbotron jumbotron-fluid)">
+
+
       <ul style="list-style: none;">
         <% if flash.notice.present?%>
           <li><p class="alert alert-notice"><%= notice %></p></li>
@@ -85,6 +91,11 @@
         <% end %>
       </ul>
         <%= yield %>
-    </div>
+
+      </div>
+
   </body>
+
+
+
 </html>
