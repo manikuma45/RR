@@ -4,9 +4,15 @@
 // @import "bootstrap";
 .jumbotron {
   background-image: url(111.jpg);
-  height: 100vh;
+  // height: 100vh;
 }
 
+.fixed-bg {
+  min-height: 100vh;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+}
 // html {
 //   position: relative;
 //   min-height: 100%;
@@ -33,8 +39,6 @@
 // main {
 //   flex: 1;
 // }
-
-
 
 body {
   display: flex;
