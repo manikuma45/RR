@@ -15,9 +15,6 @@ ja:
       title: 項目名
       Edit: 編集
       Index: 学習項目一覧
-      # Read: 本文を読む
-      # Checked_times: チェック回数
-      # Created: 作成
     edit:
       Editing Item: 項目を編集中
     new:
@@ -29,13 +26,9 @@ ja:
       label: 付箋
     history:
       Index: 学習項目履歴
-
-
     show:
-
   users:
     show:
-
   activerecord:
     errors:
       messages:

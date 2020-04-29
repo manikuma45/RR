@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ChangeDataToLearnings < ActiveRecord::Migration[5.2]
   def change
     change_column :learnings, :title, :text

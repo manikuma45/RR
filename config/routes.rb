@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   root to: 'learnings#index'
 
@@ -5,7 +7,6 @@ Rails.application.routes.draw do
     collection do
       get :history
       get :search
-      # post :revert
     end
     member do
       post :check_item
@@ -14,13 +15,10 @@ Rails.application.routes.draw do
   end
 
   devise_for :users, controllers: {
-        registrations: 'users/registrations'
-}
+    registrations: 'users/registrations'
+  }
 
   resources :users, only: [:show]
 
-  if Rails.env.development?
-    mount LetterOpenerWeb::Engine, at: "/letter_opener"
-  end
-
+  mount LetterOpenerWeb::Engine, at: '/letter_opener' if Rails.env.development?
 end

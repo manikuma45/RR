@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Label < ApplicationRecord
   before_validation :set_nameless_label
 
@@ -5,10 +7,6 @@ class Label < ApplicationRecord
   belongs_to :learning, optional: true
   has_many :labelings, dependent: :destroy
   has_many :learnings, through: :labelings
-
-  # def self.ransackable_attributes(auth_object = nil)
-  #   %w[label_name]
-  # end
 
   private
 

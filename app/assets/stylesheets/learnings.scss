@@ -3,18 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 // @import "bootstrap";
 .jumbotron {
-  // background-image: url(111.jpg);
   background-image: image-url("111.jpg");
-  // height: 100vh;
 }
-
 .fixed-bg {
   min-height: 100vh;
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
 }
-
 body {
   display: flex;
   flex-direction: column;
