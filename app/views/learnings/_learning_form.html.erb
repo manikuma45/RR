@@ -11,15 +11,15 @@
    <% end %>
   <div class="form-group">
     <%= form.label :title %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: "覚えたいこと：問" %>
   </div>
     <div class="form-group">
       <%= form.label :main_content %><br>
-      <%= form.text_area :main_content %>
+      <%= form.text_area :main_content, placeholder: "覚えたいこと：答", size: "50x3" %>
     </div>
   <div class="form-group">
     <%= form.label :url_info %><br>
-    <%= form.text_field :url_info %>
+    <%= form.text_field :url_info, placeholder: "読み返したいサイト" %>
   </div>
     <div class="actions">
       <%= form.submit "保存", class: "btn btn-success", id: 12 %>
@@ -27,7 +27,7 @@
   <div class="form-group">
     <br>
     <%= form.label :sub_content %><br>
-    <%= form.text_area :sub_content %>
+    <%= form.text_area :sub_content, placeholder: "本項についての補足事項", size: "50x3" %>
   </div>
     <div class="form-group">
       <%= form.label :image %>

@@ -18,14 +18,9 @@ ja:
     edit:
       Editing Item: 項目を編集中
     new:
-      New Item: 項目の新規作成
-      title: 項目名
-      main_content: 本文
-      sub_content: 備考
-      url_info: URL
-      label: 付箋
+      New Item: 学習項目の新規作成
     history:
-      Index: 学習項目履歴
+      Index: 学習履歴
     show:
   users:
     show:

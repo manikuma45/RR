@@ -20,7 +20,7 @@
             <%= link_to "学習項目一覧", learnings_path, class: "nav-link" if user_signed_in?  %>
           </li>
           <li class="nav-item">
-            <%= link_to "学習項目履歴", history_learnings_path, class: "nav-link" if user_signed_in? %>
+            <%= link_to "学習履歴", history_learnings_path, class: "nav-link" if user_signed_in? %>
           </li>
           <li class="nav-item">
             <%= link_to "新規登録画面", new_user_registration_path, class: "nav-link" unless user_signed_in? %>
@@ -31,8 +31,8 @@
         </ul>
       <% if user_signed_in? %>
           <ul class="navbar-nav">
-            <li class="nav-item btn btn-primary text-black">
-              <%= link_to 'new item', new_learning_path, class: "nav-link"%>
+            <li class="nav-item btn btn-primary text-black btn-sm">
+              <%= link_to '学習項目の新規作成', new_learning_path, class: "nav-link"%>
             </li>
           </ul>
         <ul class="navbar-nav">
