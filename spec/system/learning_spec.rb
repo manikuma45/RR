@@ -52,15 +52,15 @@ RSpec.describe Learning, type: :system do
   end
 
   it 'テストユーザーでログインし、項目の題名を項目編集画面で更新する' do
-    user_a =FactoryBot.create(:user, name: 'name_2', email: 'sample2@sample.com')
+    user_a = FactoryBot.create(:user, name: 'name_2', email: 'sample2@sample.com')
     Learning.create(title: 'テスト学習項目名1',
-                                 main_content: 'テスト学習内容1-1',
-                                 sub_content: 'テスト学習内容1-2',
-                                 url_info: 'https://diver.diveintocode.jp/submissions/20163',
-                                 created_on: '2020-04-27',
-                                 checked_times: 0,
-                                 reappearance_date: '',
-                                 user_id: user_a.id)
+                    main_content: 'テスト学習内容1-1',
+                    sub_content: 'テスト学習内容1-2',
+                    url_info: 'https://diver.diveintocode.jp/submissions/20163',
+                    created_on: '2020-04-27',
+                    checked_times: 0,
+                    reappearance_date: '',
+                    user_id: user_a.id)
     visit new_user_session_path
     fill_in 'user_email', with: 'sample2@sample.com'
     fill_in 'user_password', with: 'password'
@@ -74,13 +74,13 @@ RSpec.describe Learning, type: :system do
   it 'テストユーザーでログインし、項目を削除する' do
     user_a = FactoryBot.create(:user, name: 'name_2', email: 'sample2@sample.com')
     Learning.create(title: 'テスト学習項目名1',
-                                 main_content: 'テスト学習内容1-1',
-                                 sub_content: 'テスト学習内容1-2',
-                                 url_info: 'https://diver.diveintocode.jp/submissions/20163',
-                                 created_on: '2020-04-27',
-                                 checked_times: 0,
-                                 reappearance_date: '',
-                                 user_id: user_a.id)
+                    main_content: 'テスト学習内容1-1',
+                    sub_content: 'テスト学習内容1-2',
+                    url_info: 'https://diver.diveintocode.jp/submissions/20163',
+                    created_on: '2020-04-27',
+                    checked_times: 0,
+                    reappearance_date: '',
+                    user_id: user_a.id)
     visit new_user_session_path
     fill_in 'user_email', with: 'sample2@sample.com'
     fill_in 'user_password', with: 'password'
@@ -93,13 +93,13 @@ RSpec.describe Learning, type: :system do
   it 'テストユーザーでログインし、項目をチェックし、再学習ボタンで一覧に戻す' do
     user_a = FactoryBot.create(:user, name: 'name_2', email: 'sample2@sample.com')
     Learning.create(title: 'テスト学習項目名1',
-                                 main_content: 'テスト学習内容1-1',
-                                 sub_content: 'テスト学習内容1-2',
-                                 url_info: 'https://diver.diveintocode.jp/submissions/20163',
-                                 created_on: '2020-05-01',
-                                 checked_times: 0,
-                                 reappearance_date: '',
-                                 user_id: user_a.id)
+                    main_content: 'テスト学習内容1-1',
+                    sub_content: 'テスト学習内容1-2',
+                    url_info: 'https://diver.diveintocode.jp/submissions/20163',
+                    created_on: '2020-05-01',
+                    checked_times: 0,
+                    reappearance_date: '',
+                    user_id: user_a.id)
     visit new_user_session_path
     fill_in 'user_email', with: 'sample2@sample.com'
     fill_in 'user_password', with: 'password'
@@ -117,9 +117,9 @@ RSpec.describe Learning, type: :system do
 
   it '項目名で検索ができる' do
     user_a = FactoryBot.create(:user, name: 'name_2', email: 'sample2@sample.com')
-    learning_a = Learning.create(title: 'テスト学習項目名1',
+    Learning.create(title: 'テスト学習項目名1',
                                  user_id: user_a.id)
-    learning_b = Learning.create(title: 'テスト学習項目名2',
+    Learning.create(title: 'テスト学習項目名2',
                                  user_id: user_a.id)
     visit new_user_session_path
     fill_in 'user_email', with: 'sample2@sample.com'
@@ -134,11 +134,11 @@ RSpec.describe Learning, type: :system do
 
   it '本文内容で検索ができる' do
     user_a = FactoryBot.create(:user, name: 'name_2', email: 'sample2@sample.com')
-    label_a = FactoryBot.create(:label)
-    learning_a = Learning.create(title: 'テスト学習項目名1',
+    FactoryBot.create(:label)
+    Learning.create(title: 'テスト学習項目名1',
                                  main_content: 'テスト学習内容1-1',
                                  user_id: user_a.id)
-    learning_b = Learning.create(title: 'テスト学習項目名2',
+    Learning.create(title: 'テスト学習項目名2',
                                  main_content: 'テスト学習内容1-2',
                                  user_id: user_a.id)
     visit new_user_session_path
@@ -154,7 +154,7 @@ RSpec.describe Learning, type: :system do
 
   it 'ラベル名で検索ができる' do
     user_a = FactoryBot.create(:user, name: 'name_2', email: 'sample2@sample.com')
-    learning_a = Learning.create(title: 'テスト学習項目名1',
+    Learning.create(title: 'テスト学習項目名1',
                                  main_content: 'テスト学習内容1-1',
                                  user_id: user_a.id)
     FactoryBot.create(:label)
