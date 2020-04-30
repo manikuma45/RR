@@ -6,7 +6,10 @@ class LearningsController < ApplicationController
 
   def index
     if current_user.present?
-      @learnings = current_user.learnings.where(reappearance_date: '1900-01-01'.to_date..Time.zone.today).or(current_user.learnings.where(checked_times: 0)).page(params[:page]).per(10).order('created_on')
+      @learnings = current_user.learnings.where(reappearance_date: '1900-01-01'.to_date..Time.zone.today)
+                                         .or(current_user.learnings.where(checked_times: 0))
+                                           .page(params[:page])
+                                           .per(10).order('created_on')
     else
       redirect_to login_url, notice: 'Please log in.'
     end
